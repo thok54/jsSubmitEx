@@ -118,7 +118,170 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"playground.js":[function(require,module,exports) {
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// ****   1.Array operations          ***///
+console.log("*** Exercise 1: Arrays ***"); //Head
+
+console.log("Head Exercise");
+
+var head = function head(_ref) {
+  var _ref2 = _toArray(_ref),
+      first = _ref2[0],
+      nums = _ref2.slice(1);
+
+  return first;
+};
+
+var headArray = [1, 2, 3];
+console.log(headArray);
+console.log(head(headArray)); //Tail
+
+console.log("Tail Exercise");
+
+var tail = function tail(_ref3) {
+  var _ref4 = _toArray(_ref3),
+      first = _ref4[0],
+      nums = _ref4.slice(1);
+
+  return nums;
+};
+
+var tailArray = [1, 2, 3];
+console.log(tailArray);
+console.log(tail(tailArray)); //Init
+
+console.log("Init Exercise");
+
+var init = function init(_ref5) {
+  var _ref6 = _toArray(_ref5),
+      nums = _ref6.slice(0);
+
+  nums.pop();
+  return nums;
+};
+
+var initArray = [1, 2, 3];
+console.log(initArray);
+console.log(init(initArray)); //Last
+
+console.log("Last Exercise");
+
+var last = function last(_ref7) {
+  var _ref8 = _toArray(_ref7),
+      nums = _ref8.slice(0);
+
+  return nums.pop();
+};
+
+var lastArray = [1, 2, 3];
+console.log(lastArray);
+console.log(last(lastArray)); // ****   2.Concat operations          ***///
+
+console.log("");
+console.log("*** Exercise 2: Concat ***");
+console.log("Concat Exercise");
+
+var concat1 = function concat1(a, b) {
+  return [].concat(_toConsumableArray(a), _toConsumableArray(b));
+};
+
+var concatArray1 = [1, 2, 3];
+var concatArray2 = [4, 5, 6];
+console.log(concatArray1);
+console.log(concatArray2);
+console.log(concat1(concatArray1, concatArray2));
+console.log("Optional Concat Exercise");
+var concatArray3 = [7, 8, 9];
+
+var concat2 = function concat2() {
+  for (var _len = arguments.length, array = new Array(_len), _key = 0; _key < _len; _key++) {
+    array[_key] = arguments[_key];
+  }
+
+  return array.reduce(function (total, num) {
+    return total.concat(num);
+  });
+};
+
+console.log(concat2(concatArray1, concatArray2, concatArray3)); // ****   3.Clone Merge operations          ***///
+
+console.log("");
+console.log("*** Exercise 3: Clone Merge ***");
+console.log("Clone Exercise");
+var fruit = {
+  name: "Apple",
+  color: "red"
+};
+
+var clone = function clone(source) {
+  return sClone = _objectSpread({}, source);
+};
+
+console.log(fruit);
+console.log(clone(fruit));
+console.log("Merge Exercise");
+var a = {
+  name: "Maria",
+  surname: "Ibañez",
+  country: "SPA"
+};
+var b = {
+  name: "Luisa",
+  age: 31,
+  married: true
+};
+
+var merge = function merge(source, target) {
+  return clone(_objectSpread({}, target, {}, source));
+};
+
+console.log(a);
+console.log(b);
+console.log(merge(a, b)); // ****   4.Read Books operations          ***///
+
+/*
+console.log("");
+console.log("*** Exercise 4: Read Books ***");
+
+const books = [
+    { title: "Harry Potter y la piedra filosofal", isRead: true },
+    { title: "Canción de hielo y fuego", isRead: false },
+    { title: "Devastación", isRead: true },
+];
+
+function isBookRead(books, titleToSearch) {
+    let rd = false;
+    books.forEach(book => {
+        if (book.title === titleToSearch) {
+            rd = book.isRead;
+        }
+    });
+    return rd;
+};
+
+console.log(isBookRead(books, "Devastación"));
+console.log(isBookRead(books, "Canción de hielo y fuego"));
+console.log(isBookRead(books, "Los Pilares de la Tierra"));
+*/
 },{}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +310,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51600" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61765" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

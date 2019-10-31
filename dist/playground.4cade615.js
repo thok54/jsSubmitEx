@@ -117,79 +117,75 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"playground.ts":[function(require,module,exports) {
+// ****   4.Read Books operations          ***///
+console.log("");
+console.log("*** Exercise 4: Read Books ***");
+console.log("Optional Read Books");
+var bookLot = [{
+  title: "Harry Potter y la piedra filosofal",
+  isRead: true
+}, {
+  title: "Canción de hielo y fuego",
+  isRead: false
+}, {
+  title: "Devastación",
+  isRead: true
+}];
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
+function isBookRead2(books, titleToSearch) {
+  var rd = false;
+  books.forEach(function (element) {
+    if (element.title === titleToSearch) {
+      rd = element.isRead;
     }
+  });
+  return rd;
+}
+
+;
+console.log(isBookRead2(bookLot, "Devastación"));
+console.log(isBookRead2(bookLot, "Canción de hielo y fuego"));
+console.log(isBookRead2(bookLot, "Los Pilares de la Tierra")); // ****   5.Slot Machine operations          ***///
+
+console.log("");
+console.log("*** Exercise 5: Slot Machine ***");
+
+var SlothMachine =
+/** @class */
+function () {
+  function SlothMachine(coins) {
+    if (coins === void 0) {
+      coins = 1;
+    }
+
+    this.coins = coins;
   }
 
-  return '/';
-}
+  SlothMachine.prototype.play = function () {
+    var coins = this.coins++;
+    var result1 = !Math.round(Math.random());
+    var result2 = !Math.round(Math.random());
+    var result3 = !Math.round(Math.random());
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
+    if (result1 === true && result2 === true && result3 === true) {
+      console.log("Congrats, you won " + coins + " coins!!");
+      this.coins = 1;
+    } else console.log("No luck!!");
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
+    return coins;
   };
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
+  return SlothMachine;
+}();
 
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel/src/builtins/css-loader.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var machine1 = new SlothMachine();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+machine1.play();
+},{}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +389,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/src.9ad09f98.js.map
+},{}]},{},["../node_modules/parcel/src/builtins/hmr-runtime.js","playground.ts"], null)
+//# sourceMappingURL=/playground.4cade615.js.map
